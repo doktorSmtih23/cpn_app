@@ -1,8 +1,9 @@
 
-import 'package:cpn_app/services/auth_service.dart';
-import 'package:cpn_app/services/socket_service.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+
+import 'package:cpn_app/services/auth_service.dart';
+import 'package:cpn_app/services/socket_service.dart';
 
 import 'home_page.dart';
 import 'login_page.dart';
@@ -16,7 +17,7 @@ class LoadingPage extends StatelessWidget {
         future: checkLoginState(context),
         builder: (context, AsyncSnapshot<dynamic> snapshot) {
           return Center(
-            child: Text('Espere...'),
+            child: CircularProgressIndicator(strokeWidth: 3)
           );
         },
       ),
