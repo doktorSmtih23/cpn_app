@@ -1,3 +1,4 @@
+import 'package:cpn_app/shared_preferences/shared_preferences.dart';
 import 'package:flutter/material.dart';
 
 class CustomInput extends StatelessWidget {
@@ -19,6 +20,7 @@ class CustomInput extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final prefs= new PreferenciasUsuario();
     return Container(
         padding: EdgeInsets.only(top: 5, left: 5, bottom: 5, right: 20),
         margin: EdgeInsets.only(bottom: 20),
@@ -33,6 +35,9 @@ class CustomInput extends StatelessWidget {
               )
             ]),
         child: TextField(
+          onChanged: (value) {
+          prefs.emailUsuario = value;
+        },
           controller: this.textController,
           autocorrect: false,
           keyboardType: this.keyboardType,

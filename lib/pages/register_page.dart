@@ -2,7 +2,7 @@ import 'package:cpn_app/helpers/mostrar_alerta.dart';
 import 'package:cpn_app/services/auth_service.dart';
 import 'package:cpn_app/services/socket_service.dart';
 import 'package:cpn_app/widgets/boton_simple.dart';
-import 'package:cpn_app/widgets/custom_input.dart';
+import 'package:cpn_app/widgets/custom_input_email.dart';
 import 'package:cpn_app/widgets/labels.dart';
 import 'package:cpn_app/widgets/logo.dart';
 import 'package:flutter/material.dart';

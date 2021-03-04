@@ -1,12 +1,15 @@
+import 'package:cpn_app/widgets/custom_input_password.dart';
+import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
 import 'package:cpn_app/helpers/mostrar_alerta.dart';
 import 'package:cpn_app/services/auth_service.dart';
 import 'package:cpn_app/services/socket_service.dart';
+import 'package:cpn_app/shared_preferences/shared_preferences.dart';
 import 'package:cpn_app/widgets/boton_simple.dart';
-import 'package:cpn_app/widgets/custom_input.dart';
+import 'package:cpn_app/widgets/custom_input_email.dart';
 import 'package:cpn_app/widgets/labels.dart';
 import 'package:cpn_app/widgets/logo.dart';
-import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
 class LoginPage extends StatelessWidget {
   @override
@@ -46,7 +49,14 @@ class _Form extends StatefulWidget {
 }
 
 class __FormState extends State<_Form> {
-  final emailCtrl = TextEditingController();
+
+  final prefs = PreferenciasUsuario();
+  @override
+  void initState() {
+    emailCtrl= new TextEditingController(text:prefs.emailUsuario);
+    super.initState();
+  }
+  var emailCtrl = TextEditingController();
   final passCtrl = TextEditingController();
 
   @override
@@ -65,7 +75,7 @@ class __FormState extends State<_Form> {
             keyboardType: TextInputType.emailAddress,
             textController: emailCtrl,
           ),
-          CustomInput(
+          CustomInputPassword(
             icon: Icons.lock_outline,
             placeholder: 'Contraseña',
             textController: passCtrl,

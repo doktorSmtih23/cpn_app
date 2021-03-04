@@ -35,6 +35,7 @@ dependencies:
   flutter_rounded_date_picker: ^1.0.5+1
   flutter_material_pickers: ^1.8.1
   flutter_staggered_animations: "^0.1.2"
+  shared_preferences: ^0.5.10
   
   
   
