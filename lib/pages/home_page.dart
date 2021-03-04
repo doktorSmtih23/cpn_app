@@ -41,9 +41,9 @@ class _HomePageState extends State<HomePage> {
                   'Bienvenid@',
                   style: title2,
                 )),
-                Padding(padding: EdgeInsets.only(top: 50)),
+                Padding(padding: EdgeInsets.only(top: 150)),
                 ButtonFUM(title: title, label: 'Edad gestacional por\n\ FUM'),
-                Padding(padding: EdgeInsets.only(bottom: 20)),
+                Padding(padding: EdgeInsets.only(bottom: 40)),
                 ButtonEco(
                     title: title, label: 'Edad gestacional por\n\ Ecografia'),
               ],
@@ -78,8 +78,7 @@ class ButtonFUM extends StatelessWidget {
             textAlign: TextAlign.center,
             style: title,
           ),
-          onPressed: () =>
-              Navigator.pushNamed(context, 'fumwidget')),
+          onPressed: () => Navigator.pushNamed(context, 'fumwidget')),
     );
   }
 }
@@ -111,8 +110,7 @@ class ButtonEco extends StatelessWidget {
             textAlign: TextAlign.center,
             style: title,
           ),
-          onPressed: () =>
-              Navigator.pushNamed(context, 'ecowidget')),
+          onPressed: () => Navigator.pushNamed(context, 'ecowidget')),
     );
   }
 }
