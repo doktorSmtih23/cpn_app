@@ -1,10 +1,9 @@
-import 'package:cpn_app/services/auth_service.dart';
-import 'package:cpn_app/services/socket_service.dart';
+
 
 import 'package:cpn_app/widgets/appbar.dart';
 
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
+
 
 class HomePage extends StatefulWidget {
   @override
@@ -14,10 +13,6 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
-    final authService = Provider.of<AuthService>(context);
-    final socketService = Provider.of<SocketService>(context);
-    final usuario = authService.usuario;
-
     TextStyle title = TextStyle(fontSize: 20, color: Colors.pink[600]);
     TextStyle title2 = TextStyle(
         fontSize: 28, fontWeight: FontWeight.w800, color: Colors.pink[600]);
@@ -25,12 +20,10 @@ class _HomePageState extends State<HomePage> {
     return SafeArea(
         child: Scaffold(
             appBar: AppBar(
-              title: usuario.nombre != null
-                  ? Text('${usuario.nombre}')
-                  : Text('Modo offline'),
+              title: Text('Control Prenatal App'),
               centerTitle: true,
               backgroundColor: Colors.pink[300],
-              actions: <Widget>[AppBarWidget(socketService: socketService)],
+              actions: <Widget>[AppBarWidget()],
             ),
             backgroundColor: Color(0xf2f2f2f2),
             body: Column(

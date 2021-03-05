@@ -182,7 +182,7 @@ class HomeButtonWidget extends StatelessWidget {
                 backgroundColor: Colors.pink,
                 child: Icon(Icons.home, color: Colors.white),
                 onPressed: () {
-                  Navigator.pushReplacementNamed(context, 'home');
+                  Navigator.pop(context, 'home');
                 })),
       ),
     ]);
