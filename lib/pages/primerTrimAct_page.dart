@@ -7,7 +7,10 @@ import 'package:flutter/material.dart';
 
 // ignore: must_be_immutable
 class PrimerTrimActPage extends StatelessWidget {
-  TextStyle estilo = TextStyle(fontSize: 24,fontWeight: FontWeight.w500,color: Color.fromRGBO(46, 125, 50, 90));
+  TextStyle estilo = TextStyle(
+      fontSize: 24,
+      fontWeight: FontWeight.w500,
+      color: Color.fromRGBO(46, 125, 50, 90));
 
   @override
   Widget build(BuildContext context) {
@@ -15,55 +18,38 @@ class PrimerTrimActPage extends StatelessWidget {
     queryData = MediaQuery.of(context);
     return SafeArea(
       child: Scaffold(
-          appBar: AppBar(
-            title: Text('Primer Trimestre'),
-            centerTitle: true,
-          ),
-          backgroundColor: Color.fromRGBO(236, 231, 241, 10),
-          body: SingleChildScrollView(
-            physics: BouncingScrollPhysics(),
-                      child: Container(
-              child: Column(
-      children: <Widget>[
-        SizedBox(height: queryData.size.height * 0.015),
-
-        Text('Paraclinicos', style: estilo),
-
-        SizedBox(height: queryData.size.height * 0.010),
-
-        ListParacWidget(queryData: queryData),
-
-        SizedBox(height: queryData.size.height * 0.025),
-
-        Text('Ecografias', style: estilo),
-
-        SizedBox(height: queryData.size.height * 0.025),
-
-        ListEcogWidget(queryData: queryData),
-
-        SizedBox(height: queryData.size.height * 0.025),
-
-        Text('Valoraciones', style: estilo),
-
-        ListValorWidget(queryData: queryData),
-
-
-        SizedBox(height: queryData.size.height * 0.015),
-
-        Text('Suplementos', style: estilo),
-
-        SizedBox(height: queryData.size.height * 0.015),
-
-        ListSuplemWidget(queryData: queryData),
-
-        SizedBox(height: queryData.size.height * 0.025),
-
-        HomeButtonWidget(),
-      ],
-              ),
+        appBar: AppBar(
+          title: Text('Primer Trimestre'),
+          centerTitle: true,
+        ),
+        backgroundColor: Color.fromRGBO(236, 231, 241, 10),
+        body: SingleChildScrollView(
+          physics: BouncingScrollPhysics(),
+          child: Container(
+            child: Column(
+              children: <Widget>[
+                SizedBox(height: queryData.size.height * 0.015),
+                Text('Paraclinicos', style: estilo),
+                SizedBox(height: queryData.size.height * 0.010),
+                ListParacWidget(queryData: queryData),
+                SizedBox(height: queryData.size.height * 0.025),
+                Text('Ecografias', style: estilo),
+                SizedBox(height: queryData.size.height * 0.025),
+                ListEcogWidget(queryData: queryData),
+                SizedBox(height: queryData.size.height * 0.025),
+                Text('Valoraciones', style: estilo),
+                ListValorWidget(queryData: queryData),
+                SizedBox(height: queryData.size.height * 0.015),
+                Text('Suplementos', style: estilo),
+                SizedBox(height: queryData.size.height * 0.015),
+                ListSuplemWidget(queryData: queryData),
+                SizedBox(height: queryData.size.height * 0.025),
+                HomeButtonWidget(),
+              ],
             ),
           ),
         ),
+      ),
     );
   }
 }
@@ -109,7 +95,8 @@ class ListValorWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-        height: queryData.size.height * 0.23, child: ValoracionesWidget(
+        height: queryData.size.height * 0.23,
+        child: ValoracionesWidget(
           val: [
             Text('Nutricion'),
             Text('Psicologia'),
@@ -131,7 +118,8 @@ class ListEcogWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-        height: queryData.size.height * 0.14, child: EcografiasWidget(
+        height: queryData.size.height * 0.14,
+        child: EcografiasWidget(
           ecografias: [
             Text('Ecografia inicial'),
             Text('Ecografia genetica\n semanas 10.6 - 13.6')
@@ -151,7 +139,8 @@ class ListParacWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-        height: queryData.size.height * 0.35, child: ParaclinicosWidget(
+        height: queryData.size.height * 0.35,
+        child: ParaclinicosWidget(
           paraclinicos: [
             Text('Hemograma'),
             Text('HemoClasificicacion'),
