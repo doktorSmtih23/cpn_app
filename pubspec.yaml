@@ -36,9 +36,12 @@ dependencies:
   flutter_material_pickers: ^1.8.1
   flutter_staggered_animations: "^0.1.2"
   shared_preferences: ^0.5.10
-  file_picker:
+  flutter_launcher_icons: ^0.7.4
 
-
+flutter_icons:
+    image_path: 'assets/cpn_icon_app.png'
+    android: true
+    ios: true
 
 
 dev_dependencies:
@@ -50,6 +53,7 @@ dev_dependencies:
 
 # The following section is specific to Flutter.
 flutter:
+  
 
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
@@ -86,3 +90,4 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
+  

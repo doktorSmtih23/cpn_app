@@ -28,7 +28,7 @@ class LoginPage extends StatelessWidget {
                     child: BotonAzul(
                         etiqueta: 'Ingrese',
                         presionar: () {
-                          Navigator.of(context).pushReplacementNamed('home');
+                          Navigator.of(context).pushNamed('intro');
                         }),
                   ),
                 ],

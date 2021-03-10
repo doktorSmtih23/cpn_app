@@ -10,7 +10,8 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   final prefs = new PreferenciasUsuario();
   await prefs.initPrefs();
-  runApp(MyApp());} 
+  runApp(MyApp());
+}
 
 class MyApp extends StatefulWidget {
   @override
@@ -31,7 +32,7 @@ class _MyAppState extends State<MyApp> {
         ),
         debugShowCheckedModeBanner: false,
         title: 'CPN App',
-        initialRoute: 'loading',
+        initialRoute: 'login',
         routes: appRoutes,
       ),
     );
