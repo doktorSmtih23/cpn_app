@@ -189,7 +189,6 @@ class _ETVPageState extends State<ETVPage> {
                           :
                           // ignore: unnecessary_statements
                           riskScoreCalc() + 1;
-                      data.score = riskScoreCalc();
                     });
                   },
                 ),
@@ -215,12 +214,14 @@ class _ETVPageState extends State<ETVPage> {
                   child: IconButton(
                       icon: Icon(FontAwesome5Solid.arrow_right),
                       onPressed: () {
-                        Navigator.push(
-                          context,
+                        setState(() { 
+                        data.score = riskScoreCalc();
+                        Navigator.push(context,
                           MaterialPageRoute(
-                            builder: (context) => ETVPage2(data: data),
+                            builder: (context) => ETVPage2(data: data,),
                           ),
                         );
+                        });
                       }),
                 ),
               ]),

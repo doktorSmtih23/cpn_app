@@ -11,23 +11,24 @@ class ETVPage2 extends StatefulWidget {
 }
 
 class _ETVPage2State extends State<ETVPage2> {
-  final Data data;
+  @override
+  void initState() {
+    print(widget.data.score);
+    super.initState();
+  }
 
-  _ETVPage2State({this.data});
+  bool _selected = false;
+  bool _selected2 = false;
+  bool _selected3 = false;
+  bool _selected4 = false;
+  bool _selected5 = false;
+  bool _selected6 = false;
+
+  int a = 0, b = 0, c = 0, d = 0, e = 0, f = 0;
+
   @override
   Widget build(BuildContext context) {
-    List<String> antecedentes = [
-      'Trombofilia de alto riesgo sin antecedente de ETV previa',
-      'Trombofilia de bajo riesgo',
-      'Coomorbilidades medicas',
-      'Diagnostico actual de COVID19',
-      'Adiccion a drogas intravenosas',
-      'Venas varicosas gruesas'
-    ];
-
     TextStyle estilo = TextStyle(fontSize: 20, color: Colors.pink);
-    bool _antecedente = false;
-    List<bool> _switchValues = List.generate(2, (_) => true);
     return SafeArea(
       child: Scaffold(
         body: Column(
@@ -53,47 +54,123 @@ class _ETVPage2State extends State<ETVPage2> {
                 ),
               ),
             ),
-            SwitchListTile(
-              title: Text('hola mundo'),
-              selected: false,
-              value: _antecedente,
-              onChanged: (value) {
-                setState(() {
-                  _antecedente = value;
-                });
-              },
+            Card(
+              elevation: 9,
+              child: ListTileSwitch(
+                  title: Text(
+                    'Trombofilia de alto riesgo sin antecedente de ETV previa',
+                    style: estilo,
+                  ),
+                  value: _selected,
+                  switchActiveColor: Colors.yellow[600],
+                  onChanged: (value) {
+                    setState(() {
+                      _selected = value;
+                      _selected2 = false;
+                      b = 0;
+                      value ? a = 1 : a = 0;
+                    });
+                  }),
             ),
-
-            ListTileSwitch(
-              value: _antecedente,
-              leading: const Icon(Icons.access_alarms),
-              onChanged: (value) {
-                setState(() => _antecedente = value);
-              },
-              switchActiveColor: Colors.indigo,
-              title: const Text(
-                'Default Custom Switch',
-              ),
+            Card(
+              elevation: 9,
+              child: ListTileSwitch(
+                  title: Text(
+                    'Trombofilia de bajo riesgo',
+                    style: estilo,
+                  ),
+                  value: _selected2,
+                  switchActiveColor: Colors.yellow[600],
+                  onChanged: (value) {
+                    setState(() {
+                      _selected2 = value;
+                      _selected = false;
+                      a = 0;
+                      value ? b = 1 : b = 0;
+                    });
+                  }),
             ),
-            ListTileSwitch(
-              value: _switchValues[1],
-              leading: const Icon(Icons.message),
-              onChanged: (value) {
-                setState(() {
-                  _switchValues[1] = value;
-                });
-              },
-              switchActiveColor: Colors.teal,
-              switchScale: 0.8,
-              title: const Text(
-                'Cupertino Switch',
-              ),
+            Card(
+              elevation: 9,
+              child: ListTileSwitch(
+                  title: Text(
+                    'Coomorbilidades medicas',
+                    style: estilo,
+                  ),
+                  value: _selected3,
+                  switchActiveColor: Colors.yellow[600],
+                  onChanged: (value) {
+                    setState(() {
+                      _selected3 = value;
+                      value ? c = 1 : c = 0;
+                    });
+                  }),
             ),
+            Card(
+              elevation: 9,
+              child: ListTileSwitch(
+                  title: Text('Diagnostico actual de COVID19', style: estilo),
+                  value: _selected4,
+                  onChanged: (value) {
+                    setState(() {
+                      _selected4 = value;
+                      value ? d = 1 : d = 0;
+                    });
+                  }),
+            ),
+            Card(
+              elevation: 9,
+              child: ListTileSwitch(
+                  title: Text(
+                    'Adiccion a drogas intravenosas',
+                    style: estilo,
+                  ),
+                  value: _selected5,
+                  switchActiveColor: Colors.yellow[600],
+                  onChanged: (value) {
+                    setState(() {
+                      _selected5 = value;
+                      value ? e = 1 : e = 0;
+                    });
+                  }),
+            ),
+            newMethod(estilo, _selected6, 'Venas varicosas gruesas', f),
+            Text('${riskScoreCalc() + widget.data.score}')
 
             //Text('${data.score}')
           ],
         ),
       ),
     );
+  }
+
+  Padding newMethod(TextStyle estilo, bool value, String title, int x) {
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Container(
+        width: double.maxFinite,
+        child: Card(
+          elevation: 9,
+          child: ListTileSwitch(
+              title: Text(
+                title,
+                style: estilo,
+              ),
+              value: value,
+              switchActiveColor: Colors.green[300],
+              onChanged: (value) {
+                setState(() {
+                  _selected6 = value;
+                  value ? x = 1 : x = 0;
+                });
+              }),
+        ),
+      ),
+    );
+  }
+
+  int riskScoreCalc() {
+    int totalrisk = a + b + c + d + e + f;
+    return totalrisk;
   }
 }
