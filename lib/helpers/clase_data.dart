@@ -1,6 +1,8 @@
 class Data {
-  int score;
+  int lowRiskScore;
+  int intermediumRiskScore;
 
-  Data({this.score});
-
+  Data({this.lowRiskScore,
+  this.intermediumRiskScore
+  });
 }

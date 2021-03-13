@@ -11,7 +11,7 @@ class ETVPage extends StatefulWidget {
 }
 
 class _ETVPageState extends State<ETVPage> {
-  final data = Data(score: 0);
+  final data = Data(lowRiskScore: 0);
 
   final edad = new TextEditingController(text: '');
   final peso = new TextEditingController(text: '');
@@ -214,8 +214,8 @@ class _ETVPageState extends State<ETVPage> {
                   child: IconButton(
                       icon: Icon(FontAwesome5Solid.arrow_right),
                       onPressed: () {
-                        setState(() { 
-                        data.score = riskScoreCalc();
+                        setState(() {
+                        data.lowRiskScore = riskScoreCalc();
                         Navigator.push(context,
                           MaterialPageRoute(
                             builder: (context) => ETVPage2(data: data,),
