@@ -5,6 +5,7 @@ import 'package:list_tile_switch/list_tile_switch.dart';
 import 'package:cpn_app/helpers/clase_data.dart';
 
 import 'etv_page2.dart';
+import 'etv_page4.dart';
 
 class ETVPage3 extends StatefulWidget {
   final Data data;
@@ -16,12 +17,13 @@ class ETVPage3 extends StatefulWidget {
 }
 
 class _ETVPage3State extends State<ETVPage3> {
+  final data = Data(lowRiskScore: 0);
+
   bool _selected = false;
   bool _selected2 = false;
   bool _selected3 = false;
   bool _selected4 = false;
   bool _selected5 = false;
-  bool _selected6 = false;
 
   Color colorC, colorD, colorE, colorF, colorG, colorH = Colors.pink[100];
 
@@ -291,8 +293,7 @@ class _ETVPage3State extends State<ETVPage3> {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (context) =>
-                                      ETVPage3(data: widget.data),
+                                  builder: (context) => ETVPage2(data: data),
                                 ),
                               );
                             });
@@ -316,8 +317,7 @@ class _ETVPage3State extends State<ETVPage3> {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (context) =>
-                                      ETVPage2(data: widget.data),
+                                  builder: (context) => ETVPage4(),
                                 ),
                               );
                             });

@@ -214,14 +214,23 @@ class _ETVPageState extends State<ETVPage> {
                   child: IconButton(
                       icon: Icon(FontAwesome5Solid.arrow_right),
                       onPressed: () {
-                        setState(() {
-                        data.lowRiskScore = riskScoreCalc();
-                        Navigator.push(context,
-                          MaterialPageRoute(
-                            builder: (context) => ETVPage2(data: data,),
-                          ),
-                        );
-                        });
+                        if (data.lowRiskScore != null) {
+                          setState(() {
+                            data.lowRiskScore = riskScoreCalc();
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => ETVPage2(
+                                  data: data,
+                                ),
+                              ),
+                            );
+                          });
+                        } else {
+                          Center(
+                              child: Text(
+                                  'Diligencie todos los campos por favor'));
+                        }
                       }),
                 ),
               ]),
@@ -241,6 +250,7 @@ class _ETVPageState extends State<ETVPage> {
         pesoD = 0.0;
         tallaD = 0.0;
       });
+      print(e);
       return false;
     }
   }
@@ -262,11 +272,17 @@ class _ETVPageState extends State<ETVPage> {
   }
 
   int riskScoreCalc() {
-    int totalrisk = a + b + c;
-    return totalrisk;
+    if (imcR < 30) {
+      int totalrisk = a + b + c;
+      return totalrisk;
+    } else {
+      int totalrisk = a + b + c + 1;
+      return totalrisk;
+    }
   }
 }
 
+// ignore: must_be_immutable
 class TextFieldWidget extends StatelessWidget {
   final String etiqueta;
   final String labelText;

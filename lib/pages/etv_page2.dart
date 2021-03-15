@@ -258,16 +258,23 @@ class _ETVPage2State extends State<ETVPage2> {
                 child: IconButton(
                     icon: Icon(FontAwesome5Solid.arrow_right),
                     onPressed: () {
-                      setState(() {
-                        data.lowRiskScore = widget.data.lowRiskScore+lrs2+lrs2;
-                        data.intermediumRiskScore = riskScoreCalc();
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => ETVPage3(data: data),
-                          ),
-                        );
-                      });
+                      if (data.lowRiskScore != null) {
+                        setState(() {
+                          data.lowRiskScore =
+                              widget.data.lowRiskScore + lrs2 + lrs2;
+                          data.intermediumRiskScore = riskScoreCalc();
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => ETVPage3(data: data),
+                            ),
+                          );
+                        });
+                      } else {
+                        Center(
+                            child:
+                                Text('Diligencie todos los campos por favor'));
+                      }
                     }))
           ],
         ),
