@@ -4,6 +4,8 @@ import 'package:flutter_icons/flutter_icons.dart';
 import 'package:list_tile_switch/list_tile_switch.dart';
 import 'package:cpn_app/helpers/clase_data.dart';
 
+import 'etv_page2.dart';
+
 class ETVPage3 extends StatefulWidget {
   final Data data;
 
@@ -315,7 +317,7 @@ class _ETVPage3State extends State<ETVPage3> {
                                 context,
                                 MaterialPageRoute(
                                   builder: (context) =>
-                                      ETVPage3(data: widget.data),
+                                      ETVPage2(data: widget.data),
                                 ),
                               );
                             });
