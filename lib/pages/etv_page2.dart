@@ -6,6 +6,8 @@ import 'package:list_tile_switch/list_tile_switch.dart';
 
 import 'package:cpn_app/helpers/clase_data.dart';
 
+import 'etv_page.dart';
+
 class ETVPage2 extends StatefulWidget {
   final Data data;
 
@@ -253,29 +255,60 @@ class _ETVPage2State extends State<ETVPage2> {
               'Factores de riesgo intermedio ${riskScoreCalc()}',
               style: estilo,
             ),
-            Card(
-                elevation: 9,
-                child: IconButton(
-                    icon: Icon(FontAwesome5Solid.arrow_right),
-                    onPressed: () {
-                      if (data.lowRiskScore != null) {
-                        setState(() {
-                          data.lowRiskScore =
-                              widget.data.lowRiskScore + lrs2 + lrs2;
-                          data.intermediumRiskScore = riskScoreCalc();
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => ETVPage3(data: data),
-                            ),
-                          );
-                        });
-                      } else {
-                        Center(
-                            child:
-                                Text('Diligencie todos los campos por favor'));
-                      }
-                    }))
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Card(
+                    elevation: 9,
+                    child: IconButton(
+                        icon: Icon(FontAwesome5Solid.arrow_left),
+                        onPressed: () {
+                          if (data.lowRiskScore != null) {
+                            setState(() {
+                              data.lowRiskScore =
+                                  widget.data.lowRiskScore + lrs2 + lrs2;
+                              data.intermediumRiskScore = riskScoreCalc();
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => ETVPage(),
+                                ),
+                              );
+                            });
+                          } else {
+                            Center(
+                                child: Text(
+                                    'Diligencie todos los campos por favor'));
+                          }
+                        })),
+                SizedBox(
+                  width: 100,
+                ),
+                Card(
+                    elevation: 9,
+                    child: IconButton(
+                        icon: Icon(FontAwesome5Solid.arrow_right),
+                        onPressed: () {
+                          if (data.lowRiskScore != null) {
+                            setState(() {
+                              data.lowRiskScore =
+                                  widget.data.lowRiskScore + lrs2 + lrs2;
+                              data.intermediumRiskScore = riskScoreCalc();
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => ETVPage3(data: data),
+                                ),
+                              );
+                            });
+                          } else {
+                            Center(
+                                child: Text(
+                                    'Diligencie todos los campos por favor'));
+                          }
+                        }))
+              ],
+            )
           ],
         ),
       ),

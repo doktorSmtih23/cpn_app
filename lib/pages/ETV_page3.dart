@@ -17,7 +17,7 @@ class ETVPage3 extends StatefulWidget {
 }
 
 class _ETVPage3State extends State<ETVPage3> {
-  final data = Data(lowRiskScore: 0);
+  final data = Data(lowRiskScore: 0, highRiskScore: 0);
 
   bool _selected = false;
   bool _selected2 = false;
@@ -310,14 +310,14 @@ class _ETVPage3State extends State<ETVPage3> {
                           icon: Icon(FontAwesome5Solid.arrow_right),
                           onPressed: () {
                             setState(() {
-                              widget.data.lowRiskScore =
+                              data.lowRiskScore =
                                   widget.data.lowRiskScore + lrs2 + lrs2;
-                              widget.data.intermediumRiskScore =
-                                  riskScoreCalc();
+                              data.intermediumRiskScore = riskScoreCalc();
+                              data.highRiskScore = widget.data.highRiskScore;
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (context) => ETVPage4(),
+                                  builder: (context) => ETVPage4(data: data),
                                 ),
                               );
                             });

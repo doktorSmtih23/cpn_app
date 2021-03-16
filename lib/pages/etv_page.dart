@@ -184,53 +184,37 @@ class _ETVPageState extends State<ETVPage> {
                         c = 0;
                         colorP = Colors.pink[100];
                       }
-                      imcR > 30
-                          ? riskScoreCalc()
-                          :
-                          // ignore: unnecessary_statements
-                          riskScoreCalc() + 1;
                     });
                   },
                 ),
-                imcR > 30
-                    ? Card(
-                        margin: EdgeInsets.all(20),
-                        elevation: 9,
-                        child: Align(
-                          alignment: Alignment.center,
-                          child: Text(
-                            'Factores de riesgo a considerar \n${riskScoreCalc() + 1}',
-                            style: estilo,
-                            textAlign: TextAlign.center,
-                          ),
-                        ),
-                      )
-                    : Text(
-                        'Factores de riesgo a considerar \n${riskScoreCalc()}',
-                        style: estilo,
-                        textAlign: TextAlign.center),
+                Card(
+                  margin: EdgeInsets.all(20),
+                  elevation: 9,
+                  child: Align(
+                    alignment: Alignment.center,
+                    child: Text(
+                      'Factores de riesgo a considerar \n${riskScoreCalc()}',
+                      style: estilo,
+                      textAlign: TextAlign.center,
+                    ),
+                  ),
+                ),
                 Card(
                   elevation: 9,
                   child: IconButton(
                       icon: Icon(FontAwesome5Solid.arrow_right),
                       onPressed: () {
-                        if (data.lowRiskScore != null) {
-                          setState(() {
-                            data.lowRiskScore = riskScoreCalc();
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => ETVPage2(
-                                  data: data,
-                                ),
+                        setState(() {
+                          data.lowRiskScore = riskScoreCalc();
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => ETVPage2(
+                                data: data,
                               ),
-                            );
-                          });
-                        } else {
-                          Center(
-                              child: Text(
-                                  'Diligencie todos los campos por favor'));
-                        }
+                            ),
+                          );
+                        });
                       }),
                 ),
               ]),
