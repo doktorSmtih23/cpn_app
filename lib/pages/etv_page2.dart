@@ -266,7 +266,7 @@ class _ETVPage2State extends State<ETVPage2> {
                           if (data.lowRiskScore != null) {
                             setState(() {
                               data.lowRiskScore =
-                                  widget.data.lowRiskScore + lrs2 + lrs2;
+                                  widget.data.lowRiskScore + lrs1 + lrs2;
                               data.intermediumRiskScore = riskScoreCalc();
                               Navigator.push(
                                 context,
@@ -292,7 +292,7 @@ class _ETVPage2State extends State<ETVPage2> {
                           if (data.lowRiskScore != null) {
                             setState(() {
                               data.lowRiskScore =
-                                  widget.data.lowRiskScore + lrs2 + lrs2;
+                                  widget.data.lowRiskScore + lrs1 + lrs2;
                               data.intermediumRiskScore = riskScoreCalc();
                               Navigator.push(
                                 context,

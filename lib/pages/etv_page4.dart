@@ -1,9 +1,11 @@
-import 'package:cpn_app/helpers/clase_data.dart';
+import 'package:cpn_app/pages/etv_page5.dart';
 import 'package:flutter/material.dart';
+import 'dart:ui';
 
-import 'package:cpn_app/widgets/listTitle_widget.dart';
 import 'package:flutter_icons/flutter_icons.dart';
+import 'package:cpn_app/widgets/listTitle_widget.dart';
 
+import 'package:cpn_app/helpers/clase_data.dart';
 import 'ETV_page3.dart';
 
 class ETVPage4 extends StatefulWidget {
@@ -38,6 +40,7 @@ class _ETVPage4State extends State<ETVPage4> {
 
   @override
   Widget build(BuildContext context) {
+    TextStyle estilo = TextStyle(fontSize: 24);
     return SafeArea(
       child: Scaffold(
         body: Center(
@@ -141,9 +144,26 @@ class _ETVPage4State extends State<ETVPage4> {
                 });
               },
             ),
-            Text('${widget.data.lowRiskScore + lrsCalc()}'),
-            Text('${widget.data.intermediumRiskScore + mrsCalc()}'),
-            //Text('${widget.data.highRiskScore + mrsCalc()}'),
+            Card(
+              elevation: 9,
+              child: Container(
+                width: 350,
+                child: Column(
+                  children: <Widget>[
+                    Text(
+                      'Factores a considerar ${widget.data.lowRiskScore + lrsCalc()}',
+                      style: estilo,
+                    ),
+                    Text(
+                      'Riesgo intermedio ${widget.data.intermediumRiskScore + mrsCalc()}',
+                      style: estilo,
+                    ),
+                    Text('Riesgo alto ${widget.data.highRiskScore}',
+                        style: estilo),
+                  ],
+                ),
+              ),
+            ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
@@ -161,7 +181,11 @@ class _ETVPage4State extends State<ETVPage4> {
                   width: 250,
                 ),
                 IconButton(
-                    icon: Icon(FontAwesome5Solid.arrow_right), onPressed: () {})
+                    icon: Icon(FontAwesome5Solid.arrow_right),
+                    onPressed: () {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => ETVPage5()));
+                    })
               ],
             ),
           ],

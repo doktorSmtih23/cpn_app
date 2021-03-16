@@ -287,7 +287,7 @@ class _ETVPage3State extends State<ETVPage3> {
                           onPressed: () {
                             setState(() {
                               widget.data.lowRiskScore =
-                                  widget.data.lowRiskScore + lrs2 + lrs2;
+                                  widget.data.lowRiskScore + lrs1 + lrs2;
                               widget.data.intermediumRiskScore =
                                   riskScoreCalc();
                               Navigator.push(
@@ -311,9 +311,10 @@ class _ETVPage3State extends State<ETVPage3> {
                           onPressed: () {
                             setState(() {
                               data.lowRiskScore =
-                                  widget.data.lowRiskScore + lrs2 + lrs2;
-                              data.intermediumRiskScore = riskScoreCalc();
-                              data.highRiskScore = widget.data.highRiskScore;
+                                  widget.data.lowRiskScore + lrs1;
+                              data.intermediumRiskScore =
+                                  widget.data.intermediumRiskScore + mrs1;
+                              data.highRiskScore = riskScoreCalc();
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
