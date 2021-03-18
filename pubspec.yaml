@@ -40,6 +40,8 @@ dependencies:
   flutter_icons: ^1.1.0
   list_tile_switch:
   glassmorphism_kit: ^0.1.1
+  
+  
 
 flutter_icons:
     image_path: 'assets/cpn_icon_app.png'

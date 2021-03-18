@@ -1,9 +1,7 @@
-
-
-import 'package:cpn_app/widgets/appbar.dart';
-
 import 'package:flutter/material.dart';
 
+import 'package:cpn_app/widgets/appbar.dart';
+import 'package:glassmorphism_kit/glassmorphism_kit.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -20,25 +18,61 @@ class _HomePageState extends State<HomePage> {
     return SafeArea(
         child: Scaffold(
             appBar: AppBar(
-              title: Text('Control Prenatal App'),
               centerTitle: true,
-              backgroundColor: Colors.pink[300],
-              actions: <Widget>[AppBarWidget()],
+              actions: <Widget>[
+                AppBarWidget(
+                  label: 'Control Prenatal App',
+                )
+              ],
             ),
             backgroundColor: Color(0xf2f2f2f2),
             body: Column(
               children: <Widget>[
-                Padding(padding: EdgeInsets.only(top: 80)),
-                Center(
-                    child: Text(
-                  'Bienvenid@',
-                  style: title2,
-                )),
-                Padding(padding: EdgeInsets.only(top: 150)),
-                ButtonFUM(title: title, label: 'Edad gestacional por\n\ FUM'),
-                Padding(padding: EdgeInsets.only(bottom: 40)),
-                ButtonEco(
-                    title: title, label: 'Edad gestacional por\n\ Ecografia'),
+                Container(
+                  height: 678,
+                  decoration: BoxDecoration(
+                      image: DecorationImage(
+                          image: AssetImage(
+                            "assets/cpn_img.jpg",
+                          ),
+                          scale: 8.0,
+                          fit: BoxFit.fitHeight)),
+                  child: Column(
+                    children: [
+                      Padding(padding: EdgeInsets.all(40)),
+                      Center(
+                          child: Text(
+                        'Bienvenid@',
+                        style: title2,
+                      )),
+                      Padding(padding: EdgeInsets.all(30)),
+                      GlassContainer(
+                        borderRadius: BorderRadius.circular(15),
+                        blurStrengthX: 6,
+                        blurStrengthY: 6,
+                        height: 350,
+                        width: 350,
+                        color: Colors.pinkAccent,
+                        colorOpacity: 0.19,
+                        child: Center(
+                          child: Column(
+                            children: <Widget>[
+                              Padding(padding: EdgeInsets.only(top: 80)),
+                              ButtonFUM(
+                                  title: title,
+                                  label: 'Edad gestacional por\n\ FUM'),
+                              Padding(padding: EdgeInsets.only(bottom: 40)),
+                              ButtonEco(
+                                  title: title,
+                                  label: 'Edad gestacional por\n\ Ecografia'),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                //Padding(padding: EdgeInsets.only(top: 80)),
               ],
             )));
   }
