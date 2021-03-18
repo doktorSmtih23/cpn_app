@@ -1,8 +1,8 @@
-import 'dart:ffi';
+import 'package:flutter/material.dart';
+
+import 'package:cpn_app/widgets/listTitle_widget.dart';
 
 import 'package:cpn_app/helpers/clase_data.dart';
-import 'package:cpn_app/widgets/listTitle_widget.dart';
-import 'package:flutter/material.dart';
 
 class ETVPage5 extends StatefulWidget {
   final Data data;
@@ -158,26 +158,27 @@ class _ETVPage5State extends State<ETVPage5> {
                     child: Column(
                       children: [
                         Container(
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(20),
-                            ),
-                            width: 350,
-                            child: Column(
-                              children: [
-                                Text(
-                                  'Factores a considerar ${widget.data.lowRiskScore + lrsCalc()}',
-                                  style: TextStyle(fontSize: 24),
-                                ),
-                                Text(
-                                  'Riesgo intermedio ${widget.data.intermediumRiskScore + mrsCalc()}',
-                                  style: TextStyle(fontSize: 24),
-                                ),
-                                Text(
-                                  'Riesgo alto ${widget.data.highRiskScore}',
-                                  style: TextStyle(fontSize: 24),
-                                )
-                              ],
-                            )),
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(20),
+                          ),
+                          width: 350,
+                          child: Column(
+                            children: [
+                              Text(
+                                'Factores a considerar ${widget.data.lowRiskScore + lrsCalc()}',
+                                style: TextStyle(fontSize: 24),
+                              ),
+                              Text(
+                                'Riesgo intermedio ${widget.data.intermediumRiskScore + mrsCalc()}',
+                                style: TextStyle(fontSize: 24),
+                              ),
+                              Text(
+                                'Riesgo alto ${widget.data.highRiskScore}',
+                                style: TextStyle(fontSize: 24),
+                              )
+                            ],
+                          ),
+                        ),
                       ],
                     ),
                   ),
