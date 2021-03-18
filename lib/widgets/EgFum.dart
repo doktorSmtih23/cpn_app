@@ -98,7 +98,7 @@ class _EcoWigdetState extends State<EcoWidget> {
                     backgroundColor: Colors.pink,
                     child: Icon(Icons.home, color: Colors.white),
                     onPressed: () {
-                      Navigator.pushReplacementNamed(context, 'home');
+                      Navigator.pushReplacementNamed(context, 'intro');
                     })),
           ),
         ]),

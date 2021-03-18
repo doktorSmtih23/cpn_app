@@ -1,9 +1,11 @@
+import 'package:cpn_app/widgets/appbar.dart';
 import 'package:cpn_app/widgets/ecografiasWidget.dart';
 import 'package:cpn_app/widgets/paraclinicosWidget.dart';
 import 'package:cpn_app/widgets/suplementos.dart';
 import 'package:cpn_app/widgets/vacunas.dart';
 import 'package:cpn_app/widgets/valoracionesWidget.dart';
 import 'package:flutter/material.dart';
+import 'package:glassmorphism_kit/glassmorphism_kit.dart';
 
 // ignore: must_be_immutable
 class PrimerTrimActPage extends StatelessWidget {
@@ -19,8 +21,12 @@ class PrimerTrimActPage extends StatelessWidget {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
-          title: Text('Primer Trimestre'),
           centerTitle: true,
+          actions: [
+            AppBarWidget(
+              label: 'Primer Trimestre',
+            )
+          ],
         ),
         backgroundColor: Color.fromRGBO(236, 231, 241, 10),
         body: SingleChildScrollView(

@@ -8,14 +8,18 @@ class AppBarWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    TextStyle title = TextStyle(fontSize: 24, color: Colors.white);
+    TextStyle title = TextStyle(
+      fontSize: 26,
+      color: Colors.white,
+    );
     return GlassBar(
         title: Text(
           this.label,
           style: title,
+          textAlign: TextAlign.center,
         ),
-        color: Colors.white,
-        colorOpacity: 0.7,
+        //color: Colors.white,
+        colorOpacity: 0.9,
         actions: [
           Row(mainAxisAlignment: MainAxisAlignment.start, children: <Widget>[
             IconButton(
