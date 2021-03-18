@@ -170,6 +170,10 @@ class _ETVPage4State extends State<ETVPage4> {
                 IconButton(
                     icon: Icon(FontAwesome5Solid.arrow_left),
                     onPressed: () {
+                      data.lowRiskScore = widget.data.lowRiskScore + lrsCalc();
+                      data.intermediumRiskScore =
+                          widget.data.intermediumRiskScore + mrsCalc();
+                      data.highRiskScore = widget.data.highRiskScore;
                       Navigator.push(
                         context,
                         MaterialPageRoute(
@@ -183,8 +187,16 @@ class _ETVPage4State extends State<ETVPage4> {
                 IconButton(
                     icon: Icon(FontAwesome5Solid.arrow_right),
                     onPressed: () {
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => ETVPage5()));
+                      data.lowRiskScore = widget.data.lowRiskScore + lrsCalc();
+                      data.intermediumRiskScore =
+                          widget.data.intermediumRiskScore + mrsCalc();
+                      data.highRiskScore = widget.data.highRiskScore;
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => ETVPage5(
+                                    data: data,
+                                  )));
                     })
               ],
             ),
