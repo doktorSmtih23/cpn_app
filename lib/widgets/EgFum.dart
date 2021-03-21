@@ -23,6 +23,12 @@ class _EcoWigdetState extends State<EcoWidget> {
       child: Scaffold(
         backgroundColor: Color(0xf2f2f2f2),
         body: Stack(children: <Widget>[
+          Container(
+            decoration: BoxDecoration(
+                image: DecorationImage(
+                    image: AssetImage('assets/fum_img.jpg'),
+                    fit: BoxFit.cover)),
+          ),
           Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [

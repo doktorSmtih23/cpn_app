@@ -16,7 +16,7 @@ class Logo extends StatelessWidget {
             this.text,
             style: TextStyle(
                 fontSize: 30,
-                fontWeight: FontWeight.w300,
+                fontWeight: FontWeight.w400,
                 color: Colors.pink[300]),
             textAlign: TextAlign.center,
           ),

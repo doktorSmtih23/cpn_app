@@ -26,8 +26,8 @@ class IntroPage extends StatelessWidget {
                     height: 60,
                     blurStrengthX: 10,
                     blurStrengthY: 10,
-                    color: Colors.pinkAccent,
-                    colorOpacity: 0.3,
+                    color: Colors.grey,
+                    colorOpacity: 0.35,
                     child: Text(
                       'Control Prenatal  App',
                       style: TextStyle(
@@ -42,10 +42,10 @@ class IntroPage extends StatelessWidget {
                   child: GlassContainer(
                     width: 350,
                     height: 350,
-                    color: Colors.pinkAccent,
+                    color: Colors.grey,
                     blurStrengthX: 10,
                     blurStrengthY: 10,
-                    colorOpacity: 0.3,
+                    colorOpacity: 0.35,
                     borderRadius: BorderRadius.all(
                       Radius.circular(
                         15,
