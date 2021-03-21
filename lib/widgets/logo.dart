@@ -11,11 +11,6 @@ class Logo extends StatelessWidget {
       margin: EdgeInsets.only(top: 30),
       child: Column(
         children: <Widget>[
-          Image(
-            image: AssetImage('assets/cpn_img.jpg'),
-            height: 200,
-            fit: BoxFit.cover,
-          ),
           SizedBox(height: 30),
           Text(
             this.text,

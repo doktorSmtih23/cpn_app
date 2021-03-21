@@ -1,7 +1,6 @@
 import 'package:cpn_app/pages/etv_page.dart';
 import 'package:cpn_app/pages/etv_page2.dart';
 import 'package:cpn_app/pages/home_page.dart';
-import 'package:cpn_app/pages/imc_page.dart';
 import 'package:cpn_app/pages/intro_page.dart';
 import 'package:cpn_app/pages/login_page.dart';
 import 'package:cpn_app/pages/primerTrimAct_page.dart';
@@ -20,7 +19,6 @@ final Map<String, Widget Function(BuildContext)> appRoutes = {
   'segundTrim': (_) => SegundTrimActPage(),
   'TercerTrim': (_) => TercerTrimActPage(),
   'intro': (_) => IntroPage(),
-  'imc_page': (_) => ImcPage(),
   'ETV_page': (_) => ETVPage(),
   'ETV_page2': (_) => ETVPage2(),
 };

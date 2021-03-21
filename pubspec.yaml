@@ -41,6 +41,7 @@ dependencies:
   list_tile_switch:
   glassmorphism_kit: ^0.1.1
   glassmorphism:
+  syncfusion_flutter_charts: ^18.4.48
   
   
 

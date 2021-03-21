@@ -149,7 +149,6 @@ class EgWidget extends StatelessWidget {
       style: TextStyle(
         fontSize:20,
         color: Colors.pink,
-        
       ),
       textAlign: TextAlign.center,)
       )

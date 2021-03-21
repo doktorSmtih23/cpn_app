@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_rounded_date_picker/rounded_picker.dart';
 import 'package:flutter_material_pickers/flutter_material_pickers.dart';
+import 'package:glassmorphism_kit/glassmorphism_kit.dart';
 
 import 'trimestreButton.dart';
 
@@ -32,123 +33,138 @@ class _EgWigdetState extends State<EgWidgetPage> {
       child: Scaffold(
         backgroundColor: Color(0xf2f2f2f2),
         body: Stack(children: <Widget>[
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              Padding(
-                padding: const EdgeInsets.only(top: 20.0, left: 25, right: 25),
-                child: RaisedButton(
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(15)),
-                    child: Text(
-                      'Ingrese fecha de la Ecografia',
-                      style: TextStyle(color: Colors.pink, fontSize: 24),
-                      textAlign: TextAlign.center,
+          Container(
+            decoration: BoxDecoration(
+                image: DecorationImage(
+                    image: AssetImage('assets/eco_img.png'),
+                    fit: BoxFit.cover)),
+          ),
+          Center(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                Padding(
+                  padding:
+                      const EdgeInsets.only(top: 20.0, left: 25, right: 25),
+                  child: RaisedButton(
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(15)),
+                      child: Text(
+                        'Ingrese fecha de la Ecografia',
+                        style: TextStyle(color: Colors.pink, fontSize: 24),
+                        textAlign: TextAlign.center,
+                      ),
+                      onPressed: () async {
+                        DateTime newDateTime = await showRoundedDatePicker(
+                          theme: ThemeData(primarySwatch: Colors.pink),
+                          context: context,
+                          initialDate: DateTime.now(),
+                          firstDate: DateTime(DateTime.now().year - 1),
+                          lastDate: DateTime(DateTime.now().year + 99),
+                          borderRadius: 25,
+                          onTapDay: (newDateTime, _) {
+                            setState(() {
+                              _selectedDate = newDateTime;
+                            });
+                            return true;
+                          },
+                        ); // return newDateTime;
+                      }),
+                ),
+                Padding(padding: EdgeInsets.all(6)),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Column(
+                      children: [
+                        RaisedButton(
+                            child: Text(
+                              'Semanas',
+                              style:
+                                  TextStyle(color: Colors.pink, fontSize: 20),
+                            ),
+                            onPressed: () {
+                              showMaterialNumberPicker(
+                                context: context,
+                                title: "Numero de semanas",
+                                maxNumber: 42,
+                                minNumber: 0,
+                                selectedNumber: wks,
+                                onChanged: (value) =>
+                                    setState(() => wks = value),
+                              );
+                            }),
+                        Text('$wks',
+                            style: TextStyle(fontSize: 26, color: Colors.pink)),
+                      ],
                     ),
-                    onPressed: () async {
-                      DateTime newDateTime = await showRoundedDatePicker(
-                        theme: ThemeData(primarySwatch: Colors.pink),
-                        context: context,
-                        initialDate: DateTime.now(),
-                        firstDate: DateTime(DateTime.now().year - 1),
-                        lastDate: DateTime(DateTime.now().year + 99),
-                        borderRadius: 25,
-                        onTapDay: (newDateTime, _) {
-                          setState(() {
-                            _selectedDate = newDateTime;
-                          });
-                          return true;
-                        },
-                      ); // return newDateTime;
-                    }),
-              ),
-              Padding(padding: EdgeInsets.all(6)),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Column(
-                    children: [
-                      RaisedButton(
-                          child: Text(
-                            'Semanas',
-                            style: TextStyle(color: Colors.pink, fontSize: 20),
-                          ),
-                          onPressed: () {
-                            showMaterialNumberPicker(
-                              context: context,
-                              title: "Numero de semanas",
-                              maxNumber: 42,
-                              minNumber: 0,
-                              selectedNumber: wks,
-                              onChanged: (value) => setState(() => wks = value),
-                            );
-                          }),
-                      Text('$wks', style: TextStyle(fontSize: 18)),
-                    ],
-                  ),
-                  SizedBox(
-                    width: queryData.size.width * .085,
-                  ),
-                  Column(
-                    children: [
-                      RaisedButton(
-                          child: Text(
-                            'Dias',
-                            style: TextStyle(color: Colors.pink, fontSize: 20),
-                          ),
-                          onPressed: () {
-                            showMaterialNumberPicker(
-                              headerColor: Colors.pink,
-                              buttonTextColor: Colors.pink,
-                              context: context,
-                              title: 'Numero de dias',
-                              maxNumber: 6,
-                              minNumber: 0,
-                              selectedNumber: dys,
-                              onChanged: (value) => setState(() => dys = value),
-                            );
-                          }),
-                      Text('$dys', style: TextStyle(fontSize: 18)),
-                    ],
-                  ),
-                ],
-              ),
-              Padding(padding: EdgeInsets.all(6)),
-              mostrarFechas(_selectedDate),
-              Padding(padding: EdgeInsets.only(top: 24)),
-              Text(
-                'Actividades',
-                style: TextStyle(color: Colors.pink, fontSize: 24),
-                textAlign: TextAlign.center,
-              ),
-              Padding(padding: EdgeInsets.only(top: 12)),
-              Column(
-                children: <Widget>[
-                  TrimestreButton(
-                    rotulo: 'Primer trimestre\n\ semanas 1 - 13',
-                    color: Colors.green,
-                    navegador: () {
-                      Navigator.pushNamed(context, 'primerTrim');
-                    },
-                  ),
-                  TrimestreButton(
-                    rotulo: 'Segundo trimestre\n\ semanas 14 - 27',
-                    color: Colors.yellow[600],
-                    navegador: () {
-                      Navigator.pushNamed(context, 'segundTrim');
-                    },
-                  ),
-                  TrimestreButton(
-                    color: Colors.orange,
-                    rotulo: 'Tercer trimestre\n\ semanas 28 - 40',
-                    navegador: () {
-                      Navigator.pushNamed(context, 'TercerTrim');
-                    },
-                  ),
-                  Padding(padding: EdgeInsets.only(top: 5)),
-                ],
-              ),
-            ],
+                    SizedBox(
+                      width: queryData.size.width * .085,
+                    ),
+                    Column(
+                      children: [
+                        RaisedButton(
+                            child: Text(
+                              'Dias',
+                              style:
+                                  TextStyle(color: Colors.pink, fontSize: 20),
+                            ),
+                            onPressed: () {
+                              showMaterialNumberPicker(
+                                headerColor: Colors.pink,
+                                buttonTextColor: Colors.pink,
+                                context: context,
+                                title: 'Numero de dias',
+                                maxNumber: 6,
+                                minNumber: 0,
+                                selectedNumber: dys,
+                                onChanged: (value) =>
+                                    setState(() => dys = value),
+                              );
+                            }),
+                        Text('$dys',
+                            style: TextStyle(fontSize: 26, color: Colors.pink)),
+                      ],
+                    ),
+                  ],
+                ),
+                Padding(padding: EdgeInsets.all(6)),
+                mostrarFechas(_selectedDate),
+                Padding(padding: EdgeInsets.only(top: 24)),
+                Text(
+                  'Actividades',
+                  style: TextStyle(color: Colors.pink, fontSize: 24),
+                  textAlign: TextAlign.center,
+                ),
+                Padding(padding: EdgeInsets.only(top: 12)),
+                Column(
+                  children: <Widget>[
+                    TrimestreButton(
+                      rotulo: 'Primer trimestre\n\ semanas 1 - 13',
+                      color: Colors.green,
+                      navegador: () {
+                        Navigator.pushNamed(context, 'primerTrim');
+                      },
+                    ),
+                    TrimestreButton(
+                      rotulo: 'Segundo trimestre\n\ semanas 14 - 27',
+                      color: Colors.yellow[600],
+                      navegador: () {
+                        Navigator.pushNamed(context, 'segundTrim');
+                      },
+                    ),
+                    TrimestreButton(
+                      color: Colors.orange,
+                      rotulo: 'Tercer trimestre\n\ semanas 28 - 40',
+                      navegador: () {
+                        Navigator.pushNamed(context, 'TercerTrim');
+                      },
+                    ),
+                    Padding(padding: EdgeInsets.only(top: 5)),
+                  ],
+                ),
+              ],
+            ),
           ),
           Padding(
             padding: const EdgeInsets.all(8.0),

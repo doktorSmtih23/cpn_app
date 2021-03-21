@@ -154,6 +154,7 @@ class ListParacWidget extends StatelessWidget {
             Text('UroCultivo'),
             Text('Prueba Treponemica Rapida'),
             Text('VIH'),
+            Text('Hepatitis B Ag S'),
             Text('Toxoplasma IgG IgM'),
             Text('Rubeola IgG IgM'),
           ],
