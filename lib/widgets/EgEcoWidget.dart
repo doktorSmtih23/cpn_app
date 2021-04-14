@@ -45,13 +45,13 @@ class _EgWigdetState extends State<EgWidgetPage> {
               children: [
                 Padding(
                   padding:
-                      const EdgeInsets.only(top: 20.0, left: 25, right: 25),
+                      const EdgeInsets.only(top: 15.0, left: 25, right: 25),
                   child: RaisedButton(
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(15)),
                       child: Text(
                         'Ingrese fecha de la Ecografia',
-                        style: TextStyle(color: Colors.pink, fontSize: 24),
+                        style: TextStyle(color: Colors.pink, fontSize: 20),
                         textAlign: TextAlign.center,
                       ),
                       onPressed: () async {
@@ -130,7 +130,7 @@ class _EgWigdetState extends State<EgWidgetPage> {
                 ),
                 Padding(padding: EdgeInsets.all(6)),
                 mostrarFechas(_selectedDate),
-                Padding(padding: EdgeInsets.only(top: 24)),
+                Padding(padding: EdgeInsets.only(top: 10)),
                 Text(
                   'Actividades',
                   style: TextStyle(color: Colors.pink, fontSize: 24),
