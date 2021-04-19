@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-import 'package:glassmorphism_kit/glassmorphism_kit.dart';
-
 class HomePage extends StatefulWidget {
   @override
   _HomePageState createState() => _HomePageState();
@@ -14,8 +12,6 @@ class _HomePageState extends State<HomePage> {
     TextStyle title2 = TextStyle(
         fontSize: 26, fontWeight: FontWeight.w800, color: Colors.pink[600]);
 
-    MediaQueryData queryData;
-    queryData = MediaQuery.of(context);
 
     return SafeArea(
         child: Scaffold(

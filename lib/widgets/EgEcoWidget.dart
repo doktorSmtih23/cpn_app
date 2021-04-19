@@ -2,16 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_rounded_date_picker/rounded_picker.dart';
 import 'package:flutter_material_pickers/flutter_material_pickers.dart';
-import 'package:glassmorphism_kit/glassmorphism_kit.dart';
+
 
 import 'trimestreButton.dart';
 
 class EgWidgetPage extends StatefulWidget {
   @override
-  _EgWigdetState createState() => _EgWigdetState();
+  _EgWidgetState createState() => _EgWidgetState();
 }
 
-class _EgWigdetState extends State<EgWidgetPage> {
+class _EgWidgetState extends State<EgWidgetPage> {
   @override
   void initState() {
     super.initState();

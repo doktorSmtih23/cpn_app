@@ -5,7 +5,6 @@ import 'package:cpn_app/widgets/suplementos.dart';
 import 'package:cpn_app/widgets/vacunas.dart';
 import 'package:cpn_app/widgets/valoracionesWidget.dart';
 import 'package:flutter/material.dart';
-import 'package:glassmorphism_kit/glassmorphism_kit.dart';
 
 // ignore: must_be_immutable
 class PrimerTrimActPage extends StatelessWidget {
@@ -149,7 +148,7 @@ class ListParacWidget extends StatelessWidget {
         child: ParaclinicosWidget(
           paraclinicos: [
             Text('Hemograma'),
-            Text('HemoClasificicacion'),
+            Text('HemoClasificacion'),
             Text('UroAnalisis'),
             Text('UroCultivo'),
             Text('Prueba Treponemica Rapida'),

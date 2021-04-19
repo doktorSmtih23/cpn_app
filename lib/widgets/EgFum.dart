@@ -4,10 +4,10 @@ import 'package:flutter_rounded_date_picker/rounded_picker.dart';
 
 class EcoWidget extends StatefulWidget {
   @override
-  _EcoWigdetState createState() => _EcoWigdetState();
+  _EcoWidgetState createState() => _EcoWidgetState();
 }
 
-class _EcoWigdetState extends State<EcoWidget> {
+class _EcoWidgetState extends State<EcoWidget> {
   @override
   void initState() {
     super.initState();
@@ -38,13 +38,13 @@ class _EcoWigdetState extends State<EcoWidget> {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               Padding(
-                padding: const EdgeInsets.only(top: 20.0, right: 25, left: 25),
+                padding: const EdgeInsets.only(top: 15.0, right: 25, left: 25),
                 child: RaisedButton(
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(15)),
                     child: Text(
                       'Ingrese fecha de Ultima menstruacion',
-                      style: TextStyle(color: Colors.pink, fontSize: 20),
+                      style: TextStyle(color: Colors.pink, fontSize: 22),
                       textAlign: TextAlign.center,
                     ),
                     onPressed: () async {
@@ -66,13 +66,13 @@ class _EcoWigdetState extends State<EcoWidget> {
                     }),
               ),
               mostrarFechas(_selectedDate),
-              Padding(padding: EdgeInsets.only(top: 24)),
+              Padding(padding: EdgeInsets.only(top: 24, bottom: 8)),
               Text(
                 'Actividades',
                 style: TextStyle(color: Colors.pink, fontSize: 24),
                 textAlign: TextAlign.center,
               ),
-              Padding(padding: EdgeInsets.only(top: 12)),
+              Padding(padding: EdgeInsets.only(top: 8)),
               Column(
                 children: <Widget>[
                   TrimestreButton(
@@ -168,9 +168,11 @@ class DueDateWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    MediaQueryData queryData;
+    queryData = MediaQuery.of(context);
     return Container(
-      height: 80,
-      width: 300,
+      height: queryData.size.height * 0.10,
+      width: queryData.size.width * 0.8,
       child: Card(
         color: Color(0xf2f2f2f2),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
@@ -314,9 +316,11 @@ class EgWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    MediaQueryData queryData;
+    queryData = MediaQuery.of(context);
     return Container(
-        height: 80,
-        width: 270,
+        height: queryData.size.height * 0.10,
+        width: queryData.size.width * 0.8,
         child: Card(
             color: Color(0xf2f2f2f2),
             margin: EdgeInsets.all(8),
@@ -345,11 +349,13 @@ class FumWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    MediaQueryData queryData;
+    queryData = MediaQuery.of(context);
     DueDateWidget mesLet;
     mesLet = DueDateWidget(duedateD: _selectedDate);
     return Container(
-      height: 100,
-      width: 250,
+      height: queryData.size.height * 0.10,
+      width: queryData.size.width * 0.8,
       child: Card(
         color: Color(0xf2f2f2f2),
         margin: EdgeInsets.all(8),
