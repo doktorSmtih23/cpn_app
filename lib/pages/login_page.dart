@@ -1,117 +1,59 @@
-import 'package:cpn_app/widgets/custom_input_password.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
-import 'package:cpn_app/helpers/mostrar_alerta.dart';
-import 'package:cpn_app/services/auth_service.dart';
-import 'package:cpn_app/services/socket_service.dart';
-import 'package:cpn_app/shared_preferences/shared_preferences.dart';
 import 'package:cpn_app/widgets/boton_simple.dart';
-import 'package:cpn_app/widgets/custom_input_email.dart';
-import 'package:cpn_app/widgets/labels.dart';
+
 import 'package:cpn_app/widgets/logo.dart';
+import 'package:glassmorphism_kit/glassmorphism_kit.dart';
 
 class LoginPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    MediaQueryData queryData = MediaQueryData();
+    queryData = MediaQuery.of(context);
     return Scaffold(
         backgroundColor: Color(0xffF2F2F2),
         body: SafeArea(
           child: SingleChildScrollView(
             physics: BouncingScrollPhysics(),
             child: Container(
-              height: MediaQuery.of(context).size.height * 0.9,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: <Widget>[
-                  Logo(text: 'Control prenatal app'),
-                  _Form(),
-                  Labels(
-                    ruta: 'registro',
-                    label1: '¿No tienes cuenta?',
-                    label2: 'Crea una ahora!',
+              height: MediaQuery.of(context).size.height * 1.0,
+              child: Stack(children: [
+                Container(
+                  decoration: BoxDecoration(
+                      image: DecorationImage(
+                          image: AssetImage('assets/inicio.jpg'),
+                          fit: BoxFit.contain)),
+                ),
+                Center(
+                  child: GlassContainer(
+                    color: Colors.grey,
+                    borderRadius: BorderRadius.circular(15),
+                    alignment: Alignment.center,
+                    height: 350,
+                    width: 350,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: <Widget>[
+                        // Padding(padding: EdgeInsets.only(top: 10)),
+                        Center(child: Logo(text: 'Control prenatal app',
+                        )),
+                        // Padding(padding: EdgeInsets.only(top: 30)),
+                        Container(
+                          height: queryData.size.height * 0.065,
+                          width: queryData.size.width * 0.65,
+                          child: BotonAzul(
+                              etiqueta: 'Ingrese',
+                              presionar: () {
+                                Navigator.of(context).pushNamed('intro');
+                              }),
+                        ),
+                      ],
+                    ),
                   ),
-                  Text(
-                    'Términos y condiciones de uso',
-                    style: TextStyle(fontWeight: FontWeight.w200),
-                  )
-                ],
-              ),
+                ),
+              ]),
             ),
           ),
         ));
-  }
-}
-
-class _Form extends StatefulWidget {
-  @override
-  __FormState createState() => __FormState();
-}
-
-class __FormState extends State<_Form> {
-
-  final prefs = PreferenciasUsuario();
-  @override
-  void initState() {
-    emailCtrl= new TextEditingController(text:prefs.emailUsuario);
-    super.initState();
-  }
-  var emailCtrl = TextEditingController();
-  final passCtrl = TextEditingController();
-
-  @override
-  Widget build(BuildContext context) {
-    final authService = Provider.of<AuthService>(context);
-    final socketService = Provider.of<SocketService>(context);
-
-    return Container(
-      margin: EdgeInsets.only(top: 5),
-      padding: EdgeInsets.symmetric(horizontal: 50),
-      child: Column(
-        children: <Widget>[
-          CustomInput(
-            icon: Icons.mail_outline,
-            placeholder: 'Correo',
-            keyboardType: TextInputType.emailAddress,
-            textController: emailCtrl,
-          ),
-          CustomInputPassword(
-            icon: Icons.lock_outline,
-            placeholder: 'Contraseña',
-            textController: passCtrl,
-            isPassword: true,
-          ),
-          BotonAzul(
-            etiqueta: 'Ingrese',
-            presionar: authService.autenticando
-                ? null
-                : () async {
-                    FocusScope.of(context).unfocus();
-
-                    final loginOk = await authService.login(
-                        emailCtrl.text.trim(), passCtrl.text.trim());
-
-                    if (loginOk) {
-                      socketService.connect();
-                      Navigator.pushReplacementNamed(context, 'home');
-                    } else {
-                      // Mostara alerta
-                      mostrarAlerta(context, 'Login incorrecto',
-                          'Revise sus credenciales nuevamente');
-                    }
-                  },
-          ),
-          // IconButton(
-          //   icon: Icon(
-          //     Icons.offline_share,
-          //   ),
-          //   onPressed: () {
-          //     Navigator.pushNamed(context, 'home');
-          //   },
-          //   iconSize: 40,
-          // )
-        ],
-      ),
-    );
   }
 }

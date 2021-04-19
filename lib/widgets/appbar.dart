@@ -1,28 +1,33 @@
-
-import 'package:cpn_app/services/auth_service.dart';
-import 'package:cpn_app/services/socket_service.dart';
 import 'package:flutter/material.dart';
+import 'package:glassmorphism_kit/glassmorphism_kit.dart';
 
 class AppBarWidget extends StatelessWidget {
-  const AppBarWidget({
-    Key key,
-    
-    @required this.socketService,
-  }) : super(key: key);
+  final String label;
 
-  
-  final SocketService socketService;
+  const AppBarWidget({this.label});
 
   @override
   Widget build(BuildContext context) {
-    return Row(mainAxisAlignment: MainAxisAlignment.start, children: <Widget>[
-      IconButton(
-          icon: Icon(Icons.exit_to_app),
-          onPressed: () {
-            socketService.disconnect();
-            Navigator.pushNamed(context, 'login');
-            AuthService.deleteToken();
-          }),
-    ]);
+    TextStyle title = TextStyle(
+      fontSize: 26,
+      color: Colors.white,
+    );
+    return GlassBar(
+        title: Text(
+          this.label,
+          style: title,
+          textAlign: TextAlign.center,
+        ),
+        //color: Colors.white,
+        colorOpacity: 0.9,
+        actions: [
+          Row(mainAxisAlignment: MainAxisAlignment.start, children: <Widget>[
+            IconButton(
+                icon: Icon(Icons.exit_to_app),
+                onPressed: () {
+                  Navigator.pushReplacementNamed(context, 'intro');
+                }),
+          ]),
+        ]);
   }
 }

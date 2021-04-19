@@ -4,15 +4,20 @@ import 'package:flutter_rounded_date_picker/rounded_picker.dart';
 
 class EcoWidget extends StatefulWidget {
   @override
-  _EcoWigdetState createState() => _EcoWigdetState();
+  _EcoWidgetState createState() => _EcoWidgetState();
 }
 
-class _EcoWigdetState extends State<EcoWidget> {
+class _EcoWidgetState extends State<EcoWidget> {
   @override
   void initState() {
     super.initState();
     _selectedDate = DateTime.now();
+    wks = 0;
+    dys = 0;
   }
+
+  int wks = 0;
+  int dys = 0;
 
   DateTime _selectedDate;
   @override
@@ -23,17 +28,23 @@ class _EcoWigdetState extends State<EcoWidget> {
       child: Scaffold(
         backgroundColor: Color(0xf2f2f2f2),
         body: Stack(children: <Widget>[
+          Container(
+            decoration: BoxDecoration(
+                image: DecorationImage(
+                    image: AssetImage('assets/fum_img.jpg'),
+                    fit: BoxFit.cover)),
+          ),
           Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               Padding(
-                padding: const EdgeInsets.only(top: 20.0, right: 25, left: 25),
+                padding: const EdgeInsets.only(top: 15.0, right: 25, left: 25),
                 child: RaisedButton(
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(15)),
                     child: Text(
                       'Ingrese fecha de Ultima menstruacion',
-                      style: TextStyle(color: Colors.pink, fontSize: 20),
+                      style: TextStyle(color: Colors.pink, fontSize: 22),
                       textAlign: TextAlign.center,
                     ),
                     onPressed: () async {
@@ -55,13 +66,13 @@ class _EcoWigdetState extends State<EcoWidget> {
                     }),
               ),
               mostrarFechas(_selectedDate),
-              Padding(padding: EdgeInsets.only(top: 24)),
+              Padding(padding: EdgeInsets.only(top: 24, bottom: 8)),
               Text(
                 'Actividades',
                 style: TextStyle(color: Colors.pink, fontSize: 24),
                 textAlign: TextAlign.center,
               ),
-              Padding(padding: EdgeInsets.only(top: 12)),
+              Padding(padding: EdgeInsets.only(top: 8)),
               Column(
                 children: <Widget>[
                   TrimestreButton(
@@ -98,7 +109,7 @@ class _EcoWigdetState extends State<EcoWidget> {
                     backgroundColor: Colors.pink,
                     child: Icon(Icons.home, color: Colors.white),
                     onPressed: () {
-                      Navigator.pushReplacementNamed(context, 'home');
+                      Navigator.pushReplacementNamed(context, 'intro');
                     })),
           ),
         ]),
@@ -107,13 +118,19 @@ class _EcoWigdetState extends State<EcoWidget> {
   }
 
   Widget mostrarFechas(DateTime fum) {
-    var semanas = ((DateTime.now().difference(fum)).inDays ~/ 7);
+    var ecodays = 0;
 
-    var dias = DateTime.now().difference(fum).inDays % 7;
+    var duedateDays = 280 - ecodays;
 
-    var duedateY = fum.add(Duration(days: 365));
-    var duedateM = fum.subtract(Duration(days: 90));
-    var duedateD = fum.add(Duration(days: 7));
+    var semanas = (((DateTime.now().difference(fum)).inDays + ecodays) ~/ 7);
+
+    var dias = ((DateTime.now().difference(fum).inDays) + dys) % 7;
+
+    var dateActual = DateTime.now().difference(fum).inDays;
+
+    var duedateD =
+        DateTime.now().add(Duration(days: duedateDays - dateActual)); //
+
     if (DateTime.now().difference(fum).inHours >= 0) {
       return Column(children: <Widget>[
         Padding(padding: EdgeInsets.symmetric(vertical: 10)),
@@ -122,7 +139,10 @@ class _EcoWigdetState extends State<EcoWidget> {
         EgWidget(semanas: semanas, dias: dias),
         Padding(padding: EdgeInsets.symmetric(vertical: 2)),
         DueDateWidget(
-            duedateD: duedateD, duedateM: duedateM, duedateY: duedateY),
+          duedateD: duedateD,
+          // duedateM: duedateD,
+          // duedateY: duedateD,
+        ),
       ]);
     } else {
       return Text(
@@ -138,33 +158,31 @@ class DueDateWidget extends StatelessWidget {
   const DueDateWidget({
     Key key,
     @required this.duedateD,
-    @required this.duedateM,
-    @required this.duedateY,
+    // @required this.duedateM,
+    // @required this.duedateY,
   }) : super(key: key);
 
   final DateTime duedateD;
-  final DateTime duedateM;
-  final DateTime duedateY;
+  // final DateTime duedateM;
+  // final DateTime duedateY;
 
   @override
   Widget build(BuildContext context) {
     MediaQueryData queryData;
     queryData = MediaQuery.of(context);
-
     return Container(
       height: queryData.size.height * 0.10,
-      width: queryData.size.width * 0.80,
+      width: queryData.size.width * 0.8,
       child: Card(
         color: Color(0xf2f2f2f2),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
         child: Center(
-          child: mesEnLetras(duedateM, 'La fecha probable de parto es:'),
+          child: mesEnLetras(duedateD, 'La fecha probable de parto es:\n'),
         ),
       ),
     );
   }
 
-  //Este metodo retorna el mes en letras
   mesEnLetras(DateTime fum, String fecha) {
     TextStyle estiloMes = TextStyle(
       fontSize: 20,
@@ -175,7 +193,7 @@ class DueDateWidget extends StatelessWidget {
       case 1:
         {
           return Text(
-            '$fecha ${duedateD.day} Enero ${duedateY.year}',
+            '$fecha ${duedateD.day} Enero ${duedateD.year}',
             style: estiloMes,
             textAlign: TextAlign.center,
           );
@@ -184,7 +202,7 @@ class DueDateWidget extends StatelessWidget {
       case 2:
         {
           return Text(
-            '$fecha ${duedateD.day} Febrero ${duedateY.year}',
+            '$fecha ${duedateD.day} Febrero ${duedateD.year}',
             style: estiloMes,
             textAlign: TextAlign.center,
           );
@@ -193,7 +211,7 @@ class DueDateWidget extends StatelessWidget {
       case 3:
         {
           return Text(
-            '$fecha ${duedateD.day} Marzo ${duedateY.year}',
+            '$fecha ${duedateD.day} Marzo ${duedateD.year}',
             style: estiloMes,
             textAlign: TextAlign.center,
           );
@@ -202,7 +220,7 @@ class DueDateWidget extends StatelessWidget {
       case 4:
         {
           return Text(
-            '$fecha ${duedateD.day} Abril ${duedateY.year}',
+            '$fecha ${duedateD.day} Abril ${duedateD.year}',
             style: estiloMes,
             textAlign: TextAlign.center,
           );
@@ -211,7 +229,7 @@ class DueDateWidget extends StatelessWidget {
       case 5:
         {
           return Text(
-            '$fecha ${duedateD.day} Mayo ${duedateY.year}',
+            '$fecha ${duedateD.day} Mayo ${duedateD.year}',
             style: estiloMes,
             textAlign: TextAlign.center,
           );
@@ -220,7 +238,7 @@ class DueDateWidget extends StatelessWidget {
       case 6:
         {
           return Text(
-            '$fecha ${duedateD.day} Junio ${duedateY.year}',
+            '$fecha ${duedateD.day} Junio ${duedateD.year}',
             style: estiloMes,
             textAlign: TextAlign.center,
           );
@@ -229,7 +247,7 @@ class DueDateWidget extends StatelessWidget {
       case 7:
         {
           return Text(
-            '$fecha ${duedateD.day} Julio ${duedateY.year}',
+            '$fecha ${duedateD.day} Julio ${duedateD.year}',
             style: estiloMes,
             textAlign: TextAlign.center,
           );
@@ -238,7 +256,7 @@ class DueDateWidget extends StatelessWidget {
       case 8:
         {
           return Text(
-            '$fecha ${duedateD.day} Agosto ${duedateY.year}',
+            '$fecha ${duedateD.day} Agosto ${duedateD.year}',
             style: estiloMes,
             textAlign: TextAlign.center,
           );
@@ -248,7 +266,7 @@ class DueDateWidget extends StatelessWidget {
       case 9:
         {
           return Text(
-            '$fecha ${duedateD.day} Septiembre ${duedateY.year}',
+            '$fecha ${duedateD.day} Septiembre ${duedateD.year}',
             style: estiloMes,
             textAlign: TextAlign.center,
           );
@@ -257,7 +275,7 @@ class DueDateWidget extends StatelessWidget {
       case 10:
         {
           return Text(
-            '$fecha ${duedateD.day} Octubre ${duedateY.year}',
+            '$fecha ${duedateD.day} Octubre ${duedateD.year}',
             style: estiloMes,
             textAlign: TextAlign.center,
           );
@@ -266,7 +284,7 @@ class DueDateWidget extends StatelessWidget {
       case 11:
         {
           return Text(
-            '$fecha ${duedateD.day} Noviembre ${duedateY.year}',
+            '$fecha ${duedateD.day} Noviembre ${duedateD.year}',
             style: estiloMes,
             textAlign: TextAlign.center,
           );
@@ -275,7 +293,7 @@ class DueDateWidget extends StatelessWidget {
       case 12:
         {
           return Text(
-            '$fecha ${duedateD.day} Diciembre ${duedateY.year}',
+            '$fecha ${duedateD.day} Diciembre ${duedateD.year}',
             style: estiloMes,
             textAlign: TextAlign.center,
           );
@@ -302,7 +320,7 @@ class EgWidget extends StatelessWidget {
     queryData = MediaQuery.of(context);
     return Container(
         height: queryData.size.height * 0.10,
-        width: queryData.size.width * 0.82,
+        width: queryData.size.width * 0.8,
         child: Card(
             color: Color(0xf2f2f2f2),
             margin: EdgeInsets.all(8),
@@ -334,24 +352,16 @@ class FumWidget extends StatelessWidget {
     MediaQueryData queryData;
     queryData = MediaQuery.of(context);
     DueDateWidget mesLet;
-    mesLet = DueDateWidget(
-        duedateD: _selectedDate,
-        duedateM: _selectedDate,
-        duedateY: _selectedDate);
+    mesLet = DueDateWidget(duedateD: _selectedDate);
     return Container(
       height: queryData.size.height * 0.10,
-      width: queryData.size.width * 0.82,
+      width: queryData.size.width * 0.8,
       child: Card(
         color: Color(0xf2f2f2f2),
         margin: EdgeInsets.all(8),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
         child: Center(
-          child: mesLet.mesEnLetras(_selectedDate, 'FUM\n'),
-          // child: Text(
-          //   'FUM \n\ ${_selectedDate.day} ${_selectedDate.month} ${_selectedDate.year}',
-          //   style: TextStyle(fontSize: 20, color: Colors.pink[400]),
-          //   textAlign: TextAlign.center,
-          // ),
+          child: mesLet.mesEnLetras(_selectedDate, 'La fecha de la FUM es:\n'),
         ),
       ),
     );

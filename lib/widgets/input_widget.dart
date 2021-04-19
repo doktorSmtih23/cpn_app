@@ -1,4 +1,3 @@
-import 'package:cpn_app/shared_preferences/shared_preferences.dart';
 import 'package:flutter/material.dart';
 
 class CustomInput extends StatelessWidget {
@@ -9,18 +8,17 @@ class CustomInput extends StatelessWidget {
   final bool isPassword;
 
   const CustomInput({
-    Key key, 
-    @required this.icon, 
-    @required this.placeholder, 
-    @required this.textController, 
-    this.keyboardType= TextInputType.text, 
-    this.isPassword =false,
-    }) : super(key: key);
-
+    Key key,
+    @required this.icon,
+    @required this.placeholder,
+    @required this.textController,
+    this.keyboardType = TextInputType.text,
+    this.isPassword = false,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final prefs= new PreferenciasUsuario();
+    var dato = new TextEditingController();
     return Container(
         padding: EdgeInsets.only(top: 5, left: 5, bottom: 5, right: 20),
         margin: EdgeInsets.only(bottom: 20),
@@ -35,9 +33,6 @@ class CustomInput extends StatelessWidget {
               )
             ]),
         child: TextField(
-          onChanged: (value) {
-          prefs.emailUsuario = value;
-        },
           controller: this.textController,
           autocorrect: false,
           keyboardType: this.keyboardType,
@@ -48,6 +43,9 @@ class CustomInput extends StatelessWidget {
             border: InputBorder.none,
             hintText: this.placeholder,
           ),
+          onChanged: (value) {
+            dato.text = value;
+          },
         ));
   }
 }
