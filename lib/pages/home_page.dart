@@ -1,3 +1,4 @@
+import 'package:cpn_app/widgets/boton_simple.dart';
 import 'package:flutter/material.dart';
 import 'package:glassmorphism_kit/glassmorphism_kit.dart';
 
@@ -11,38 +12,89 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     TextStyle title = TextStyle(fontSize: 20, color: Colors.pink[600]);
     TextStyle title2 = TextStyle(
-        fontSize: 26, fontWeight: FontWeight.w800, color: Colors.pink[600]);
+        fontSize: 26, fontWeight: FontWeight.w800, color: Colors.white);
 
     return SafeArea(
         child: Scaffold(
-            backgroundColor: Color(0xf2f2f2f2),
-            body: Column(
-              children: [
-                Padding(padding: EdgeInsets.all(40)),
-                Center(
-                    child: Text(
-                  'Calculo de Edad  Gestacional',
-                  style: title2,
-                )),
-                Padding(padding: EdgeInsets.all(30)),
-                GlassContainer(
-                  height: 350,
-                  width: 300,
-                  child: Column(
-                    children: <Widget>[
-                      Padding(padding: EdgeInsets.only(top: 80)),
-                      ButtonFUM(
-                          title: title, label: 'Edad gestacional por\n\ FUM'),
-                      Padding(padding: EdgeInsets.only(bottom: 40)),
-                      ButtonEco(
-                          title: title,
-                          label: 'Edad gestacional por\n\ Ecografia'),
-                      Padding(padding: EdgeInsets.only(bottom: 10)),
-                    ],
-                  ),
+            body: Stack(children: [
+      Container(
+        decoration: BoxDecoration(
+            image: DecorationImage(
+                image: AssetImage('assets/emb2.jpg'), fit: BoxFit.cover)),
+      ),
+      Column(
+        children: [
+          Padding(padding: EdgeInsets.all(20)),
+          GlassContainer(
+            color: Colors.grey,
+            width: 300,
+            height: 80,
+            blurStrengthX: 10,
+            blurStrengthY: 10,
+            colorOpacity: 0.35,
+            borderRadius: BorderRadius.all(
+              Radius.circular(
+                15,
+              ),
+            ),
+            child: Center(
+                child: Text(
+              'Calculo \n\ Edad  Gestacional',
+              textAlign: TextAlign.center,
+              style: title2,
+            )),
+          ),
+          Padding(padding: EdgeInsets.only(top: 40, bottom: 70)),
+          Center(
+            child: GlassContainer(
+              width: 300,
+              height: 300,
+              color: Colors.grey,
+              blurStrengthX: 10,
+              blurStrengthY: 10,
+              colorOpacity: 0.35,
+              borderRadius: BorderRadius.all(
+                Radius.circular(
+                  15,
                 ),
-              ],
-            )));
+              ),
+              child: Center(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    Padding(padding: EdgeInsets.all(10)),
+                    BotonAzul(
+                        ancho: 200,
+                        etiqueta: 'Edad gestacional \n\ por FUM',
+                        presionar: () {
+                          Navigator.pushNamed(context, 'fumwidget');
+                        }),
+                    Padding(padding: EdgeInsets.all(30)),
+                    BotonAzul(
+                        ancho: 200,
+                        etiqueta: 'Edad gestacional \n\ por Ecografia',
+                        presionar: () {
+                          Navigator.pushNamed(context, 'ecowidget');
+                        }),
+                  ],
+                ),
+              ),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(60.0),
+            child: Align(
+                alignment: Alignment.bottomCenter,
+                child: FloatingActionButton(
+                    backgroundColor: Colors.pink,
+                    child: Icon(Icons.home, color: Colors.white),
+                    onPressed: () {
+                      Navigator.pushReplacementNamed(context, 'intro');
+                    })),
+          ),
+        ],
+      ),
+    ])));
   }
 }
 

@@ -23,6 +23,7 @@ class BotonAzul extends StatelessWidget {
           child: Center(
               child: Text(
             this.etiqueta,
+            textAlign: TextAlign.center,
             style: TextStyle(color: Colors.white, fontSize: 18),
           )),
         ));
