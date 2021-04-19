@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:glassmorphism_kit/glassmorphism_kit.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -12,30 +13,36 @@ class _HomePageState extends State<HomePage> {
     TextStyle title2 = TextStyle(
         fontSize: 26, fontWeight: FontWeight.w800, color: Colors.pink[600]);
 
-
     return SafeArea(
         child: Scaffold(
-            //backgroundColor: Color(0xf2f2f2f2),
+            backgroundColor: Color(0xf2f2f2f2),
             body: Column(
-      children: [
-        Padding(padding: EdgeInsets.all(40)),
-        Center(
-            child: Text(
-          'Calculo de Edad  Gestacional',
-          style: title2,
-        )),
-        Padding(padding: EdgeInsets.all(30)),
-        Column(
-          children: <Widget>[
-            Padding(padding: EdgeInsets.only(top: 80)),
-            ButtonFUM(title: title, label: 'Edad gestacional por\n\ FUM'),
-            Padding(padding: EdgeInsets.only(bottom: 40)),
-            ButtonEco(title: title, label: 'Edad gestacional por\n\ Ecografia'),
-            Padding(padding: EdgeInsets.only(bottom: 10)),
-          ],
-        ),
-      ],
-    )));
+              children: [
+                Padding(padding: EdgeInsets.all(40)),
+                Center(
+                    child: Text(
+                  'Calculo de Edad  Gestacional',
+                  style: title2,
+                )),
+                Padding(padding: EdgeInsets.all(30)),
+                GlassContainer(
+                  height: 350,
+                  width: 300,
+                  child: Column(
+                    children: <Widget>[
+                      Padding(padding: EdgeInsets.only(top: 80)),
+                      ButtonFUM(
+                          title: title, label: 'Edad gestacional por\n\ FUM'),
+                      Padding(padding: EdgeInsets.only(bottom: 40)),
+                      ButtonEco(
+                          title: title,
+                          label: 'Edad gestacional por\n\ Ecografia'),
+                      Padding(padding: EdgeInsets.only(bottom: 10)),
+                    ],
+                  ),
+                ),
+              ],
+            )));
   }
 }
 
