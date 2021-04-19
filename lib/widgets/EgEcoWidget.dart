@@ -3,7 +3,6 @@ import 'package:flutter/rendering.dart';
 import 'package:flutter_rounded_date_picker/rounded_picker.dart';
 import 'package:flutter_material_pickers/flutter_material_pickers.dart';
 
-
 import 'trimestreButton.dart';
 
 class EgWidgetPage extends StatefulWidget {
@@ -174,7 +173,7 @@ class _EgWidgetState extends State<EgWidgetPage> {
                     backgroundColor: Colors.pink,
                     child: Icon(Icons.home, color: Colors.white),
                     onPressed: () {
-                      Navigator.pushReplacementNamed(context, 'home');
+                      Navigator.pushReplacementNamed(context, 'intro');
                     })),
           ),
         ]),
