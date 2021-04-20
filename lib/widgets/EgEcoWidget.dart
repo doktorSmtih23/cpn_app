@@ -173,7 +173,7 @@ class _EgWidgetState extends State<EgWidgetPage> {
                     backgroundColor: Colors.pink,
                     child: Icon(Icons.home, color: Colors.white),
                     onPressed: () {
-                      Navigator.pushReplacementNamed(context, 'intro');
+                      Navigator.pushReplacementNamed(context, 'home');
                     })),
           ),
         ]),

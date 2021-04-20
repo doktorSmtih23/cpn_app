@@ -162,22 +162,18 @@ class ListParacWidget extends StatelessWidget {
 }
 
 class HomeButtonWidget extends StatelessWidget {
-  const HomeButtonWidget({
-    Key key,
-  }) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
     return Row(mainAxisAlignment: MainAxisAlignment.center, children: <Widget>[
       Padding(
-        padding: const EdgeInsets.symmetric(vertical: 2.0),
+        padding: const EdgeInsets.only(bottom: 10.0),
         child: Align(
             alignment: Alignment.bottomCenter,
             child: FloatingActionButton(
                 backgroundColor: Colors.pink,
-                child: Icon(Icons.home, color: Colors.white),
+                child: Icon(Icons.arrow_back_rounded, color: Colors.white),
                 onPressed: () {
-                  Navigator.pop(context, 'home');
+                  Navigator.pop(context, 'primerTrim');
                 })),
       ),
     ]);

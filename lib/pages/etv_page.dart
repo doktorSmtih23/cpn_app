@@ -31,7 +31,7 @@ class _ETVPageState extends State<ETVPage> {
   double riskScore;
   int a = 0, b = 0, c = 0;
 
-  TextStyle estilo = TextStyle(fontSize: 20, color: Colors.pink);
+  TextStyle estilo = TextStyle(fontSize: 24, color: Colors.pink);
 
   @override
   Widget build(BuildContext context) {
@@ -43,12 +43,13 @@ class _ETVPageState extends State<ETVPage> {
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
+                Padding(padding: EdgeInsets.only(top: 15)),
                 Center(
                     child: Text(
                   'Riesgo ETV Prenatal',
                   style: estilo,
                 )),
-                Padding(padding: EdgeInsets.all(20)),
+                Padding(padding: EdgeInsets.only(top: 15)),
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Align(
@@ -56,7 +57,7 @@ class _ETVPageState extends State<ETVPage> {
                     child: Text(
                       'Datos de la paciente',
                       style: TextStyle(
-                          fontSize: 18,
+                          fontSize: 20,
                           color: Colors.pink,
                           fontWeight: FontWeight.bold),
                     ),

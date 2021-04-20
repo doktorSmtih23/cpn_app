@@ -13,21 +13,13 @@ class AppBarWidget extends StatelessWidget {
       color: Colors.white,
     );
     return GlassBar(
-        title: Text(
-          this.label,
-          style: title,
-          textAlign: TextAlign.center,
-        ),
-        //color: Colors.white,
-        colorOpacity: 0.9,
-        actions: [
-          Row(mainAxisAlignment: MainAxisAlignment.start, children: <Widget>[
-            IconButton(
-                icon: Icon(Icons.exit_to_app),
-                onPressed: () {
-                  Navigator.pushReplacementNamed(context, 'intro');
-                }),
-          ]),
-        ]);
+      title: Text(
+        this.label,
+        style: title,
+        textAlign: TextAlign.center,
+      ),
+      //color: Colors.white,
+      colorOpacity: 0.9,
+    );
   }
 }

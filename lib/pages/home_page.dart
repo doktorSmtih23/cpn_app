@@ -23,6 +23,7 @@ class _HomePageState extends State<HomePage> {
                 image: AssetImage('assets/emb2.jpg'), fit: BoxFit.cover)),
       ),
       Column(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
           Padding(padding: EdgeInsets.all(20)),
           GlassContainer(
@@ -82,7 +83,7 @@ class _HomePageState extends State<HomePage> {
             ),
           ),
           Padding(
-            padding: const EdgeInsets.all(60.0),
+            padding: const EdgeInsets.all(20.0),
             child: Align(
                 alignment: Alignment.bottomCenter,
                 child: FloatingActionButton(

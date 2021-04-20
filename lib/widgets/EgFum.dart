@@ -79,7 +79,7 @@ class _EcoWidgetState extends State<EcoWidget> {
                     rotulo: 'Primer trimestre\n\ semanas 1 - 13',
                     color: Colors.green,
                     navegador: () {
-                      Navigator.pushReplacementNamed(context, 'primerTrim');
+                      Navigator.pushNamed(context, 'primerTrim');
                     },
                   ),
                   TrimestreButton(
@@ -109,7 +109,7 @@ class _EcoWidgetState extends State<EcoWidget> {
                     backgroundColor: Colors.pink,
                     child: Icon(Icons.home, color: Colors.white),
                     onPressed: () {
-                      Navigator.pushReplacementNamed(context, 'intro');
+                      Navigator.pushReplacementNamed(context, 'home');
                     })),
           ),
         ]),
